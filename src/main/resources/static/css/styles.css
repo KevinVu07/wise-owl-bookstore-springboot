@@ -228,12 +228,10 @@ section .main .main_img img {
 	margin-bottom: 35px;
 }
 
-.book_list .book_list_box {
-	width: 95%;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: repeat(4, 25%);
-	grid-column-gap: 10px;
+.book-img {
+	height: 250px;
+	width: 100%;
+	object-fit: contain; /* or try cover */
 }
 
 .book_list .book_list_box .book_card {

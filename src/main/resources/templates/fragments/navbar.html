@@ -1,0 +1,63 @@
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light">
+
+<div class="container-fluid">
+        <a class="navbar-brand logo" th:href="@{/home}">
+            <img th:src="@{/assets/images/WiseOwlBookstoreCopy.png}" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active" th:href="@{/home}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/books}">All Books</a></li>
+
+                <!-- Show only if admin == 1 -->
+                <li class="nav-item" th:if="${admin == 1}">
+                    <a class="nav-link" th:href="@{/admin-add-new-book}">Add New Book</a>
+                </li>
+            </ul>
+
+            <div>
+                <!-- If user is not logged in -->
+                <div class="nav-item dropdown" th:if="${session.firstName == null}">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Login/Register
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" th:href="@{/login}">Login</a></li>
+                        <li><a class="dropdown-item" th:href="@{/register}">Register</a></li>
+                    </ul>
+                </div>
+
+                <!-- If user is logged in -->
+                <div class="d-flex" th:if="${session.firstName != null}">
+                    <a id="cartIconNav" class="mx-1" th:href="@{/order-summary}">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                    </a>
+                    <a id="cartIconNav" class="mx-1" th:href="@{/cart}">
+                        <i class="fas fa-shopping-cart mx-2"></i>
+                    </a>
+                    <div class="nav-item dropdown mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span th:text="${session.firstName}">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" th:href="@{/account-update}">Account</a></li>
+                            <li><a class="dropdown-item" th:href="@{/cart}">Cart</a></li>
+                            <li><a class="dropdown-item" th:href="@{/order-summary}">Checkout</a></li>
+                            <li><a class="dropdown-item" th:href="@{/order-history}">Order History</a></li>
+                            <li><hr class="dropdown-divider" /></li>
+                            <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</nav>
