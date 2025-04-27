@@ -21,18 +21,18 @@ nav .logo img {
 /* main section */
 
 section .main {
+	min-height: 80vh;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
-	position: relative;
-	top: 10%;
+	justify-content: center;
+	padding: 2rem;
+	gap: 2rem;
+	flex-wrap: wrap;
 }
 
 section .main h1 {
-	position: relative;
 	font-size: 55px;
-	top: 80px;
-	left: 25px;
+	margin-bottom: 20px;
 }
 
 section .main h1 span {
@@ -40,36 +40,45 @@ section .main h1 span {
 }
 
 section .main p {
-	width: 650px;
-	text-align: justify;
+	width: 100%;
+	text-align: center;
 	line-height: 22px;
-	position: relative;
-	top: 125px;
-	left: 25px;
+	margin-bottom: 20px;
 }
 
 section .main .main_tag .main_btn {
 	background: #f2ad1a;
 	padding: 10px 20px;
-	position: relative;
-	top: 200px;
-	left: 25px;
 	color: #fff;
 	text-decoration: none;
 }
 
+.main_img {
+	flex: 1 1 45%;
+	text-align: center;
+}
+
+.main_tag {
+	flex: 1 1 45%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 section .main .main_img img {
-	width: 600px;
-	position: relative;
-	top: 90px;
-	left: 20px;
+	max-width: 100%;
+	height: auto;
+	max-height: 400px;
+	object-fit: contain; /* or 'scale-down' */
 }
 
 /* services */
 .services {
 	width: 100%;
 	height: auto;
-	margin: 200px 0px;
+	margin: 200px 0;
 }
 
 .services .services_box {
@@ -98,6 +107,59 @@ section .main .main_img img {
 .services .services_box .services_card h3 {
 	margin-bottom: 10px;
 }
+
+/* Custom tweaks for responsiveness */
+@media (max-width: 768px) {
+	.main_tag h1 {
+		font-size: 2rem; /* shrink welcome header */
+	}
+	.main_tag p {
+		font-size: 1rem;
+	}
+	.about_tag h1 {
+		font-size: 1.8rem;
+	}
+	.about_tag p {
+		font-size: 1rem;
+	}
+	.services_card {
+		padding: 1rem;
+	}
+	.main_img img, .about_image img {
+		max-width: 80%;
+		height: auto;
+	}
+}
+
+@media (max-width: 576px) {
+	.main_tag h1 {
+		font-size: 1.7rem;
+	}
+	.main_tag p, .about_tag p {
+		font-size: 0.95rem;
+	}
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+	.main_tag h1 {
+		font-size: 1.5rem;
+	}
+
+	.main_tag p, .about_tag p {
+		font-size: 0.85rem;
+	}
+
+	.services_card {
+		padding: 0.5rem;
+	}
+
+	.main_img img, .about_image img {
+		max-width: 100%;
+		height: auto;
+	}
+}
+
 
 /* about */
 .about {
@@ -257,7 +319,7 @@ section .main .main_img img {
 .book_list .book_list_box .book_card .book_image img {
 	width: 100%;
 	height: 100%;
-	object-fit: fit;
+	object-fit: cover;
 	object-position: center;
 }
 
@@ -376,7 +438,7 @@ footer .footer_main .tag i {
 }
 
 #cartBookImage img {
-	width: 100px !important; 
+	width: 100px !important;
 	height: auto !important;
 	margin: 0 10px;
 }
@@ -384,4 +446,5 @@ footer .footer_main .tag i {
 #cartBookDescription {
 	text-overflow: ellipsis !important;
 }
+
 

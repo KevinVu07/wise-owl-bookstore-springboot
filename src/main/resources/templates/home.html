@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wise Owl Bookshop</title>
+
+    <!-- Bootstrap, CSS, and Fontawesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/7ee7b60095.js" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/images/favicon/apple-touch-icon.png}" />
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/images/favicon/favicon-32x32.png}" />
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/images/favicon/favicon-16x16.png}" />
+    <link rel="manifest" th:href="@{/images/favicon/site.webmanifest}" />
+    <link rel="mask-icon" th:href="@{/images/favicon/safari-pinned-tab.svg}" color="#5bbad5" />
+    <link rel="shortcut icon" th:href="@{/images/favicon/favicon.ico}" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" th:content="@{/images/favicon/browserconfig.xml}" />
+    <meta name="theme-color" content="#ffffff" />
+</head>
+<body>
+
+<!-- Navbar -->
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<section class="container mt-4">
+
+    <div th:if="${loginSuccess}" class="mt-2 text-center text-success" th:text="${loginSuccess}"></div>
+
+    <div class="main d-flex flex-column flex-lg-row align-items-center justify-content-between">
+        <div class="main_tag text-center text-lg-start">
+            <h1 class="mb-4">
+                WELCOME TO<br>
+                <span class="text-primary">WISE OWL BOOKSHOP</span>
+            </h1>
+
+            <p>Oh hello there! Wise Owl here. We have a lovely collection of books here, so why don't you come in and explore our store? Who knows, you may even find some rare gems to take home!</p>
+        </div>
+
+        <div class="main_img text-center mt-4 mt-lg-0">
+            <img th:src="@{/images/home/wiseOwlOnBooks.png}" class="img-fluid" alt="Wise Owl on books" />
+        </div>
+    </div>
+
+</section>
+
+<!-- Services -->
+<section class="services my-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 mb-4">
+                <div class="services_card p-3 shadow rounded">
+                    <i class="fa-solid fa-truck-fast fa-2x mb-2"></i>
+                    <h3 class="h5">Fast Delivery</h3>
+                    <p>Free for order over $50!</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="services_card p-3 shadow rounded">
+                    <i class="fa-solid fa-tag fa-2x mb-2"></i>
+                    <h3 class="h5">Best Deal</h3>
+                    <p>We will beat any lower price you can find!</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="services_card p-3 shadow rounded">
+                    <i class="fa-solid fa-headset fa-2x mb-2"></i>
+                    <h3 class="h5">24/7 Support</h3>
+                    <p>Call us any time in need!</p>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="services_card p-3 shadow rounded">
+                    <i class="fa-solid fa-lock fa-2x mb-2"></i>
+                    <h3 class="h5">Secured Payment</h3>
+                    <p>Purchase your books with peace of mind!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about my-5">
+    <div class="container d-flex flex-column flex-lg-row align-items-center">
+        <div class="about_image text-center mb-4 mb-lg-0">
+            <img th:src="@{/images/home/openBook.png}" class="img-fluid" alt="Open Book" />
+        </div>
+
+        <div class="about_tag text-center text-lg-start ms-lg-5">
+            <h1>About Us</h1>
+            <p>A book shop where book lovers can relax and find joy in looking for the books they love.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
