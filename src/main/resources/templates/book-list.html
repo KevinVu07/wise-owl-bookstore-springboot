@@ -42,7 +42,7 @@
             <div th:each="book : ${books}" class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex">
                 <div class="book_card d-flex flex-column justify-content-between p-3 border rounded shadow w-100 h-100">
                     <div class="book_image text-center mb-2">
-                        <img th:src="@{/images/books/{img}(img=${book.image})}" class="img-fluid book-img" alt="Book cover" />
+                        <a th:href="@{/book/{id}(id=${book.id})}"><img th:src="@{/images/books/{img}(img=${book.image})}" class="img-fluid book-img" alt="Book cover" /></a>
                     </div>
                     <div class="book_tag text-center flex-grow-1 d-flex flex-column justify-content-start mt-2">
                         <h4 class="mb-1" th:text="${book.name}">Book Name</h4>
@@ -54,7 +54,7 @@
                         </p>
                     </div>
                     <div id="purchase" class="d-flex flex-column justify-content-between">
-                        <a th:href="@{/book/{id}(id=${book.id})} " class="book_btn mb-2 btn btn-primary">Details</a>
+                        <a th:href="@{/book/{id}(id=${book.id})}" class="book_btn mb-2 btn btn-primary">Details</a>
 
                         <div class="d-flex justify-content-center">
                             <form class="mx-1" th:action="@{/add-to-cart}" method="get">
