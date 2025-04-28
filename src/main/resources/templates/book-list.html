@@ -54,7 +54,7 @@
                         </p>
                     </div>
                     <div id="purchase" class="d-flex flex-column justify-content-between">
-                        <a th:href="@{/book(id=${book.id})}" class="book_btn mb-2 btn btn-primary">Details</a>
+                        <a th:href="@{/book/{id}(id=${book.id})} " class="book_btn mb-2 btn btn-primary">Details</a>
 
                         <div class="d-flex justify-content-center">
                             <form class="mx-1" th:action="@{/add-to-cart}" method="get">
