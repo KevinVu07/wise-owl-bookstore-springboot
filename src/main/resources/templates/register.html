@@ -27,7 +27,6 @@
 <section class="container h-auto d-flex justify-content-center align-items-center mt-5 mb-5">
     <form th:action="@{/register}" th:object="${user}" method="post" class="w-75" novalidate>
 
-        <div th:if="${successMsg}" class="mt-2 text-center text-success" th:text="${successMsg}"></div>
         <div th:if="${failMsg}" class="mt-2 text-center text-danger" th:text="${failMsg}"></div>
 
         <div class="text-center">

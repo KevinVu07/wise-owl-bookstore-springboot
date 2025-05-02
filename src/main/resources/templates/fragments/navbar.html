@@ -1,6 +1,6 @@
-<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light">
+<nav th:fragment="navbar" class="navbar navbar-expand-lg bg-light" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<div class="container-fluid">
+    <div class="container-fluid">
         <a class="navbar-brand logo" th:href="@{/}">
             <img th:src="@{/images/navbar/WiseOwlBookstoreCopy.png}" />
         </a>
@@ -16,15 +16,15 @@
                 <li class="nav-item"><a class="nav-link active" th:href="@{/}">Home</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/books}">All Books</a></li>
 
-                <!-- Show only if admin == 1 -->
-                <li class="nav-item" th:if="${admin == 1}">
+                <!-- Show only if ROLE_ADMIN -->
+                <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a class="nav-link" th:href="@{/admin-add-new-book}">Add New Book</a>
                 </li>
             </ul>
 
             <div>
-                <!-- If user is not logged in -->
-                <div class="nav-item dropdown" th:if="${session.firstName == null}">
+                <!-- If the user is not authenticated -->
+                <div class="nav-item dropdown" sec:authorize="!isAuthenticated()">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Login/Register
                     </a>
@@ -34,17 +34,17 @@
                     </ul>
                 </div>
 
-                <!-- If user is logged in -->
-                <div class="d-flex" th:if="${session.firstName != null}">
-                    <a id="cartIconNav" class="mx-1" th:href="@{/order-summary}">
+                <!-- If the user is authenticated -->
+                <div class="d-flex" sec:authorize="isAuthenticated()">
+                    <a class="mx-1" th:href="@{/order-summary}">
                         <i class="fa-solid fa-money-check-dollar"></i>
                     </a>
-                    <a id="cartIconNav" class="mx-1" th:href="@{/cart}">
+                    <a class="mx-1" th:href="@{/cart}">
                         <i class="fas fa-shopping-cart mx-2"></i>
                     </a>
                     <div class="nav-item dropdown mx-1">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span th:text="${session.firstName}">User</span>
+                            <span sec:authentication="name">User</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" th:href="@{/account-update}">Account</a></li>
@@ -57,7 +57,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </nav>
