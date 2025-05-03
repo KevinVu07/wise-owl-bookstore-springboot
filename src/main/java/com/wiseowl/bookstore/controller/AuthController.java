@@ -3,6 +3,8 @@ package com.wiseowl.bookstore.controller;
 import com.wiseowl.bookstore.dto.UserDto;
 import com.wiseowl.bookstore.service.UserRegisterService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -49,8 +51,14 @@ public class AuthController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login"; // Ensure this is mapped to your login.html Thymeleaf template
+    public String loginPage(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // If user is already authenticated, redirect to home
+        if (auth != null && auth.isAuthenticated() && !auth.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/";
+        }
+        return "login";  // otherwise show login page
     }
 }
 
