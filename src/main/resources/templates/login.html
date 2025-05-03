@@ -23,35 +23,47 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<section>
-    <div th:if="${successMsg}" class="alert alert-success" th:text="${successMsg}"></div>
-    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+<section class="container h-50 d-flex justify-content-center align-items-center mt-5 mb-5">
+    <div class="w-100" style="max-width: 400px;">
+        <!-- Message section (top of login card) -->
+        <section class="mt-3">
+
+            <!-- Spring Security logout -->
+            <div th:if="${param.logout}" class="alert alert-success text-center">
+                You have been logged out successfully.
+            </div>
+
+            <!-- Custom user registration success message -->
+            <div th:if="${successMsg}" class="alert alert-success text-center" th:text="${successMsg}"></div>
+
+            <!-- Spring Security error (login failure) -->
+            <div th:if="${param.error}" class="alert alert-danger text-center">
+                Invalid username or password.
+            </div>
+
+        </section>
+
+        <!-- Login form -->
+        <form th:action="@{/login}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+            </div>
+            <div class="mb-3">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+
+        <!-- Register link -->
+        <div class="mt-3 text-center">
+            <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
+        </div>
+    </div>
 </section>
 
-<section
-        class="container h-50 d-flex justify-content-center align-items-center mt-5 mb-5">
-
-    <div th:if="${param.logout}" class="alert alert-success text-center mt-2">
-        You have been logged out successfully.
-    </div>
-
-    <form th:action="@{/login}" method="post">
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-        <div class="mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
-        </div>
-        <div class="mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Password" />
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-    </form>
-
-    <div class="mt-3">
-        <p>Don't have an account? <a th:href="@{/register}">Register here</a></p>
-    </div>
-</section>
 
 <div th:replace="fragments/footer :: footer"></div>
 

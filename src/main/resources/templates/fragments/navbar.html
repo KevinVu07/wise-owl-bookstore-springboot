@@ -52,7 +52,14 @@
                             <li><a class="dropdown-item" th:href="@{/order-summary}">Checkout</a></li>
                             <li><a class="dropdown-item" th:href="@{/order-history}">Order History</a></li>
                             <li><hr class="dropdown-divider" /></li>
-                            <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                            <li>
+                                <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                            </li>
+                            <form id="logout-form" th:action="@{/logout}" method="post" style="display: none;">
+                                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                            </form>
                         </ul>
                     </div>
                 </div>
