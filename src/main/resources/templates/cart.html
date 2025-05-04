@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cart</title>
+
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/7ee7b60095.js" crossorigin="anonymous"></script>
+
+    <!-- Favicon plugin -->
+    <link rel="apple-touch-icon" sizes="180x180" th:href="@{/assets/images/favicon/apple-touch-icon.png}" />
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/assets/images/favicon/favicon-32x32.png}" />
+    <link rel="icon" type="image/png" sizes="16x16" th:href="@{/assets/images/favicon/favicon-16x16.png}" />
+    <link rel="manifest" th:href="@{/assets/images/favicon/site.webmanifest}" />
+    <link rel="mask-icon" th:href="@{/assets/images/favicon/safari-pinned-tab.svg}" color="#5bbad5" />
+    <link rel="shortcut icon" th:href="@{/assets/images/favicon/favicon.ico}" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" th:content="@{/assets/images/favicon/browserconfig.xml}" />
+    <meta name="theme-color" content="#ffffff" />
+</head>
+
+<body>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div th:if="${cartItems.isEmpty()}" class="mt-4 d-flex justify-content-center">
+    <img id="cartEmptyImg" th:src="@{/images/emptyCart.png}" alt="Empty Cart" />
+</div>
+
+<section th:if="${not cartItems.isEmpty()}" class="container my-4">
+    <div class="cart-layout">
+        <div id="cartBox">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Your Books</th>
+                    <th scope="col">Each</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cartItem : ${cartItems}">
+                    <td class="d-flex">
+                        <div id="cartBookImage" class="me-3">
+                            <img th:src="@{/images/books/{image}(image=${cartItem.book.image})}" alt="Book Image"/>
+                        </div>
+                        <div id="cartBookDetails">
+                            <h4 th:text="${cartItem.book.name}">Book Name</h4>
+                            <p th:text="${cartItem.book.type}">Type</p>
+                        </div>
+                    </td>
+                    <td th:text="'$' + ${#numbers.formatDecimal(cartItem.book.salePrice, 2, 2)}">$0.00</td>
+                    <td>
+                        <div class="form-group d-flex justify-content-between align-items-center">
+                            <a class="btn btn-sm"
+                               th:href="@{/cart/updateQty(id=${cartItem.book.id}, action='dec')}">
+                                <i class="fas fa-minus-square"></i>
+                            </a>
+                            <span class="mx-2" th:text="${cartItem.bookQty}">1</span>
+                            <a class="btn btn-sm"
+                               th:href="@{/cart/updateQty(id=${cartItem.book.id}, action='inc')}">
+                                <i class="fas fa-plus-square"></i>
+                            </a>
+                        </div>
+                    </td>
+                    <td th:text="'$' + ${#numbers.formatDecimal(cartItem.total, 2, 2)}">$0.00</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="orderSummary">
+            <h4>Your Cart Total Value</h4>
+            <hr>
+            <div id="subTotal" class="d-flex justify-content-between">
+                <p>Sub Total</p>
+                <p th:text="'$' + ${#numbers.formatDecimal(cartTotal, 2, 2)}">$0.00</p>
+            </div>
+            <div id="shipping" class="d-flex justify-content-between">
+                <p>Shipping</p>
+                <p>Calculated at checkout</p>
+            </div>
+            <form th:action="@{/checkout}" method="post">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <button class="w-100 btn btn-success" type="submit">Checkout</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<section th:replace="~{fragments/footer :: footer}"></section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

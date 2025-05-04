@@ -289,3 +289,65 @@ footer .footer_main .tag a {
 footer .footer_main .tag i {
 	margin-right: 10px;
 }
+
+
+ /*cart styles*/
+.cart-layout {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 5rem; /* wider gap between columns */
+}
+
+/* Left column (book list) - flexible but max limit */
+#cartBox {
+	flex: 1 1 600px;  /* grow/shrink allowed, base width 600px */
+	max-width: 800px; /* don’t let it go too huge */
+}
+
+/* Right column (summary) - fixed width */
+#orderSummary {
+	flex: 0 0 300px; /* fixed width */
+	background-color: #f8f9fa;
+	padding: 1rem;
+	border-radius: 8px;
+	box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Image sizing still clean */
+#cartBookImage img {
+	width: 80px;
+	height: auto;
+	object-fit: contain;
+}
+
+/* Text spacing tidy */
+#cartBookDetails h4 {
+	margin: 0;
+	font-size: 1.1rem;
+}
+
+#cartBookDescription {
+	margin-bottom: 0.5rem;
+	font-size: 0.9rem;
+	color: #555;
+}
+
+/* RESPONSIVE fallback — stack vertically on small screens */
+@media (max-width: 992px) {
+	.cart-layout {
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	#cartBox {
+		max-width: 100%;
+	}
+
+	#orderSummary {
+		max-width: 100%;
+	}
+}
+
+
+

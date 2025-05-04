@@ -29,9 +29,11 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <section>
-    <div class="book_list container">
-        <div th:if="${addBookSuccess}" class="mt-2 text-center text-success" th:text="${addBookSuccess}"></div>
+    <div th:if="${successMsg}" class="alert alert-success">
+        <p th:text="${successMsg}"></p>
+    </div>
 
+    <div class="book_list container">
         <h1 class="text-center">All Books</h1>
 
         <form class="d-flex mb-4 justify-content-center align-items-center">
@@ -58,22 +60,17 @@
                         <a th:href="@{/book/{id}(id=${book.id})}" class="book_btn mb-2 btn btn-primary">Details</a>
 
                         <div class="d-flex justify-content-center">
-                            <form class="mx-1" th:action="@{/add-to-cart}" method="get">
+                            <form class="mx-1" th:action="@{/add-to-cart}" method="post">
                                 <input type="hidden" name="bookId" th:value="${book.id}" />
-                                <input type="hidden" name="bookImage" th:value="${book.image}" />
-                                <input type="hidden" name="bookName" th:value="${book.name}" />
-                                <input type="hidden" name="bookType" th:value="${book.type}" />
-                                <input type="hidden" name="bookDescription" th:value="${book.description}" />
-                                <input type="hidden" name="bookPrice" th:value="${book.salePrice}" />
                                 <button type="submit" class="btn btn-success">Add To Cart</button>
                             </form>
 
                             <form class="mx-1" th:action="@{/order-now}" method="post">
                                 <input type="hidden" name="bookId" th:value="${book.id}" />
-                                <input type="hidden" name="bookPrice" th:value="${book.salePrice}" />
-                                <button class="btn btn-success">Buy Now</button>
+                                <button type="submit" class="btn btn-success">Buy Now</button>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>
