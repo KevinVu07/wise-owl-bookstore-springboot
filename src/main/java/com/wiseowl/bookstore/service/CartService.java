@@ -1,7 +1,7 @@
 package com.wiseowl.bookstore.service;
 
-import com.wiseowl.bookstore.model.CartItem;
-import com.wiseowl.bookstore.model.Book;
+import com.wiseowl.bookstore.entity.CartItem;
+import com.wiseowl.bookstore.entity.Book;
 import com.wiseowl.bookstore.repository.BookRepository;
 import com.wiseowl.bookstore.repository.CartItemRepository;
 import lombok.RequiredArgsConstructor;

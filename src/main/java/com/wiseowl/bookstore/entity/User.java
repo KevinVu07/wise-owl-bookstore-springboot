@@ -1,4 +1,4 @@
-package com.wiseowl.bookstore.model;
+package com.wiseowl.bookstore.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

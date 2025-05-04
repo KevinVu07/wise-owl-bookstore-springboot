@@ -1,7 +1,7 @@
 package com.wiseowl.bookstore.service;
 
 import com.wiseowl.bookstore.dto.UserDto;
-import com.wiseowl.bookstore.model.User;
+import com.wiseowl.bookstore.entity.User;
 import com.wiseowl.bookstore.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

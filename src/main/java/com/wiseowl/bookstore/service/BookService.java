@@ -1,6 +1,6 @@
 package com.wiseowl.bookstore.service;
 
-import com.wiseowl.bookstore.model.Book;
+import com.wiseowl.bookstore.entity.Book;
 import com.wiseowl.bookstore.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.wiseowl.bookstore.repository;
 
-import com.wiseowl.bookstore.model.User;
+import com.wiseowl.bookstore.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

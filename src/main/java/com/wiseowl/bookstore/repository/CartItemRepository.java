@@ -1,6 +1,6 @@
 package com.wiseowl.bookstore.repository;
 
-import com.wiseowl.bookstore.model.CartItem;
+import com.wiseowl.bookstore.entity.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

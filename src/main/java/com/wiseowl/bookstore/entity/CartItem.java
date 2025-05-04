@@ -1,9 +1,7 @@
-package com.wiseowl.bookstore.model;
+package com.wiseowl.bookstore.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cart")

@@ -1,4 +1,4 @@
-package com.wiseowl.bookstore.model;
+package com.wiseowl.bookstore.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;

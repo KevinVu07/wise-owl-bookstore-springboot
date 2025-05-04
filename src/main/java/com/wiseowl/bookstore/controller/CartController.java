@@ -1,7 +1,7 @@
 package com.wiseowl.bookstore.controller;
 
-import com.wiseowl.bookstore.model.CartItem;
-import com.wiseowl.bookstore.model.User;
+import com.wiseowl.bookstore.entity.CartItem;
+import com.wiseowl.bookstore.entity.User;
 import com.wiseowl.bookstore.repository.UserRepository;
 import com.wiseowl.bookstore.service.CartService;
 import lombok.RequiredArgsConstructor;
@@ -60,20 +60,20 @@ public class CartController {
                             @RequestParam String action) {
         long userId = getLoggedInUserId();
         cartService.updateCartItemQuantity(userId, id, action);
-        return "redirect:/books";
+        return "redirect:/cart";
     }
 
-    @PostMapping("/order-now")
-    public String orderNow(@RequestParam("bookId") int bookId,
-                           RedirectAttributes redirectAttributes) {
-        long userId = getLoggedInUserId();
-        orderService.createOrder(userId, bookId);
-
-        redirectAttributes.addFlashAttribute("successMessage", "Order placed successfully!");
-
-        // Redirect to orders or confirmation page (your choice)
-        return "redirect:/orders";
-    }
+//    @PostMapping("/order-now")
+//    public String orderNow(@RequestParam("bookId") int bookId,
+//                           RedirectAttributes redirectAttributes) {
+//        long userId = getLoggedInUserId();
+//        orderService.createOrder(userId, bookId);
+//
+//        redirectAttributes.addFlashAttribute("successMessage", "Order placed successfully!");
+//
+//        // Redirect to orders or confirmation page (your choice)
+//        return "redirect:/orders";
+//    }
 
 
     private long getLoggedInUserId() {
