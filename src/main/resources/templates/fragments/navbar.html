@@ -36,11 +36,11 @@
 
                 <!-- If the user is authenticated -->
                 <div class="d-flex" sec:authorize="isAuthenticated()">
-                    <a class="mx-1" th:href="@{/orders-summary}">
+                    <a class="mx-1" th:href="@{/checkout}">
                         <i class="fa-solid fa-money-check-dollar"></i>
                     </a>
                     <a class="mx-1" th:href="@{/cart}">
-                        <i class="fas fa-shopping-cartItem mx-2"></i>
+                        <i class="fas fa-shopping-cart mx-2"></i>
                     </a>
                     <div class="nav-item dropdown mx-1">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,7 +49,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" th:href="@{/account-update}">Account</a></li>
                             <li><a class="dropdown-item" th:href="@{/cart}">Cart</a></li>
-                            <li><a class="dropdown-item" th:href="@{/orders-summary}">Checkout</a></li>
+                            <li><a class="dropdown-item" th:href="@{/checkout}">Checkout</a></li>
                             <li><a class="dropdown-item" th:href="@{/orders-history}">Order History</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li>
