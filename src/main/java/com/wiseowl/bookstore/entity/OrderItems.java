@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "order_items")
-public class OrderItem {
+public class OrderItems {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,10 +37,8 @@ public class OrderItem {
     @Column(name = "order_qty", nullable = false)
     private Integer orderQty;
 
-    @Column(name = "order_total", nullable = false)
-    private Double orderTotal;
+    @Column(name = "order_item_total", nullable = false)
+    private Double orderItemTotal;
 
-    @Column(name = "order_date", nullable = false)
-    private LocalDateTime orderDate;
 }
 

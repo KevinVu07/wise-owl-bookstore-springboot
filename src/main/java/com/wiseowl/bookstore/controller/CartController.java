@@ -63,19 +63,6 @@ public class CartController {
         return "redirect:/cart";
     }
 
-//    @PostMapping("/order-now")
-//    public String orderNow(@RequestParam("bookId") int bookId,
-//                           RedirectAttributes redirectAttributes) {
-//        long userId = getLoggedInUserId();
-//        orderService.createOrder(userId, bookId);
-//
-//        redirectAttributes.addFlashAttribute("successMessage", "Order placed successfully!");
-//
-//        // Redirect to orders or confirmation page (your choice)
-//        return "redirect:/orders";
-//    }
-
-
     private long getLoggedInUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.isAuthenticated()) {

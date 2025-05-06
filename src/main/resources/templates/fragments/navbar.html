@@ -36,7 +36,7 @@
 
                 <!-- If the user is authenticated -->
                 <div class="d-flex" sec:authorize="isAuthenticated()">
-                    <a class="mx-1" th:href="@{/order-summary}">
+                    <a class="mx-1" th:href="@{/orders-summary}">
                         <i class="fa-solid fa-money-check-dollar"></i>
                     </a>
                     <a class="mx-1" th:href="@{/cart}">
@@ -49,8 +49,8 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" th:href="@{/account-update}">Account</a></li>
                             <li><a class="dropdown-item" th:href="@{/cart}">Cart</a></li>
-                            <li><a class="dropdown-item" th:href="@{/order-summary}">Checkout</a></li>
-                            <li><a class="dropdown-item" th:href="@{/order-history}">Order History</a></li>
+                            <li><a class="dropdown-item" th:href="@{/orders-summary}">Checkout</a></li>
+                            <li><a class="dropdown-item" th:href="@{/orders-history}">Order History</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li>
                                 <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
