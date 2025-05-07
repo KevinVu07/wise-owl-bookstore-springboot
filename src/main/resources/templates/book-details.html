@@ -28,7 +28,7 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <section class="container my-4 h-auto" id="top_book_section">
-    <form th:action="@{/add-to-cartItem}" method="post">
+    <form th:action="@{/add-to-cart}" method="post">
         <input type="hidden" th:if="${_csrf != null}" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
         <div class="row" id="book_details_box">
             <div class="col-md-4">
@@ -57,7 +57,7 @@
                         <br /> <strong th:text="'$' + ${book.salePrice}">Book sale price</strong>
                     </p>
                     <div class="buy_options">
-                        <button type="submit" class="btn btn-warning">Add to cartItem</button>
+                        <button type="submit" class="btn btn-warning">Add to cart</button>
                     </div>
                 </div>
             </div>
